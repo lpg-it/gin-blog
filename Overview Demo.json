@@ -1,0 +1,1844 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 609,
+  "iteration": 1620354354335,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by(proxy)(irate(haproxy_backend_http_responses_total{namespace=\"kube-haproxy\",  proxy=~\"sls-api-live-.*|sls-tsf-live.*|sls-rateapi-live.*\"}[60s]))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{proxy}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "sls-api + logistic + rateapi + tsf qps",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 7,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg by (proxy)(haproxy_backend_response_time_average_seconds{proxy=~\"sls-api.*|sls-logisitc.*|sls-tsf.*|sls-rateapi.*\",proxy!~\"sls-rateapilivetest.*\",namespace=\"kube-haproxy\"})   and  sum by (proxy)(rate(haproxy_backend_http_requests_total{proxy=~\"sls-api.*|sls-logisitc.*|sls-tsf.*|sls-rateapi.*\",namespace=\"kube-haproxy\"}[120s])) >0 ",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{proxy}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "sls-api + logisitc + rateapi + tsf latency",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (proxy, code)(haproxy:qps_k8s_err_proxy_code_240{proxy=~\"sls-.*|logistics-.*\"\"}) > 0",
+          "format": "time_series",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{proxy}} - {{code}}",
+          "refId": "B"
+        },
+        {
+          "expr": "sum by (proxy,code)(irate(haproxy_backend_http_responses_total{proxy=~\"sls-.*|logistics-.*\",proxy!~\".*livetest.*\",code!~\"1xx|2xx|3xx\",namespace=\"kube-haproxy\"}[120s]))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{proxy}} - {{code}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "sls+logistics haproxy errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-mq",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 19,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "max by(queue,vhost)(rabbitmq_queue_messages{cluster=~\"rabbitmq_ssc_ctl_live\", vhost=~\"sls|ssc-sls|ssc-sls-smartrouting|sls-ssc-slsops\"}) > 0",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{vhost}}--{{queue}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "rabbitmq vhost queue length",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "activePatternIndex": 3,
+      "datasource": "$datasource",
+      "defaultPattern": {
+        "bgColors": "green|orange|red",
+        "col_name": "Value",
+        "decimals": 2,
+        "delimiter": ".",
+        "enable_bgColor": false,
+        "enable_time_based_thresholds": false,
+        "enable_transform": false,
+        "filter": {
+          "value_above": "",
+          "value_below": ""
+        },
+        "format": "none",
+        "null_color": "darkred",
+        "null_value": "No data",
+        "row_name": "_series_",
+        "thresholds": "70,90",
+        "time_based_thresholds": [],
+        "transform_values": "_value_|_value_|_value_",
+        "valueName": "avg"
+      },
+      "default_title_for_rows": "Metric",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 17,
+      "links": [],
+      "nullPointMode": "connected",
+      "patterns": [
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": "1",
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "percentunit",
+          "name": "CPU",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "CPU_MAX|CPU_AVG",
+          "row_name": "_0_",
+          "thresholds": "0.5,0.7",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "QPS",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "QPS",
+          "row_name": "_0_",
+          "thresholds": "400000",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "percentunit",
+          "name": "MEM",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "MEM_MAX|MEM_AVG",
+          "row_name": "_0_",
+          "thresholds": "50,70",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "ERR",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "4xx|5xx",
+          "row_name": "_0_",
+          "thresholds": "5",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "max"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "ms",
+          "name": "latency",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "latency",
+          "row_col_wrapper": "_",
+          "row_name": "_0_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "50,100",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_value_|_value_|_value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "max"
+        }
+      ],
+      "pluginVersion": "7.3.5",
+      "plugin_title": "Boom Table",
+      "row_col_wrapper": "_",
+      "targets": [
+        {
+          "expr": "sum by(proxy)(irate(haproxy_backend_http_responses_total{namespace=\"kube-haproxy\",  proxy=~\"sls-api.*\", proxy!~\".*-in|.*-xx\"}[1h]))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{proxy}}|QPS",
+          "refId": "A"
+        },
+        {
+          "expr": "max (label_join(avg by (application, cid,env)(avg_over_time(app:app_pod_cpu_usage_seconds_total:sum_irate{application=~\"sls-api.*\", env=\"live\",env!~\"in|xx\", cid!~\"xx|in\"}[1h])), \"container\", \"-\", \"application\", \"env\", \"cid\")) by (container)/ max(kube_pod_container_resource_limits_cpu_cores{namespace=~\"sls.*\", container=~\"sls-api.*\"}) by (container)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{container}}|CPU_MAX",
+          "refId": "B"
+        },
+        {
+          "expr": "max (label_join(avg by (application, cid,env)(avg_over_time(app:app_pod_memory_usage_bytes:sum{application=~\"sls-api.*\", env=\"live\",env!~\"in|xx\", cid!~\"xx|in\"}[1h])), \"container\", \"-\", \"application\", \"env\", \"cid\")) by (container)/ max(kube_pod_container_resource_limits_memory_bytes{namespace=~\"sls.*\", container=~\"sls-api.*\"}) by (container)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{container}}|MEM_MAX",
+          "refId": "C"
+        },
+        {
+          "expr": "avg by (proxy)(haproxy_backend_response_time_average_seconds{proxy=~\"sls-api.*\",namespace=\"kube-haproxy\",proxy!~\".*-in|.*-xx\"})*1000   and  sum by (proxy)(rate(haproxy_backend_http_requests_total{proxy=~\"sls-api.*\",namespace=\"kube-haproxy\"}[120s])) >0 ",
+          "interval": "",
+          "legendFormat": "{{proxy}}|latency",
+          "refId": "D"
+        },
+        {
+          "expr": "sum by (proxy)(haproxy:qps_k8s_err_proxy_code_240{proxy=~\"sls-api.*\",proxy!~\".*-in|.*-xx\",code=\"4xx\"})",
+          "interval": "",
+          "legendFormat": "{{proxy}}|4xx",
+          "refId": "E"
+        },
+        {
+          "expr": "sum by (proxy)(haproxy:qps_k8s_err_proxy_code_240{proxy=~\"sls-api.*\",proxy!~\".*-in|.*-xx\",code=\"5xx\"})",
+          "interval": "",
+          "legendFormat": "{{proxy}}|5xx",
+          "refId": "F"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "sls overview",
+      "type": "yesoreyeram-boomtable-panel"
+    },
+    {
+      "activePatternIndex": 3,
+      "datasource": "vm-mysql",
+      "debug_mode": false,
+      "defaultPattern": {
+        "bgColors": "green|orange|red",
+        "col_name": "_1_",
+        "decimals": 2,
+        "delimiter": "|",
+        "enable_bgColor": true,
+        "enable_time_based_thresholds": false,
+        "enable_transform": false,
+        "filter": {
+          "value_above": "",
+          "value_below": ""
+        },
+        "format": "none",
+        "null_color": "darkred",
+        "null_value": "No data",
+        "row_name": "_0_",
+        "thresholds": "5",
+        "time_based_thresholds": [],
+        "transform_values": "_value_|_value_|_value_",
+        "valueName": "current"
+      },
+      "default_title_for_rows": "Cluster",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "hide_first_column": false,
+      "hide_headers": false,
+      "id": 25,
+      "links": [],
+      "non_matching_cells_color_bg": "green",
+      "non_matching_cells_text": "0",
+      "nullPointMode": "connected",
+      "patterns": [
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "disabled": false,
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "short",
+          "name": "CONN",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "CONN",
+          "row_name": "_0_",
+          "thresholds": "10000,14000",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "TPS",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "QPS|TPS",
+          "row_name": "_0_",
+          "thresholds": "8000,10000",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "sec-behind-master",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "sec.*",
+          "row_col_wrapper": "_",
+          "row_name": "_0_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "10,50",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_value_|_value_|_value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "avg"
+        }
+      ],
+      "pluginVersion": "7.1.1",
+      "plugin_title": "Boom Table",
+      "row_col_wrapper": "_",
+      "sorting_props": {
+        "col_index": -1,
+        "direction": "desc"
+      },
+      "targets": [
+        {
+          "expr": "topk(9,max by (mysql_address, instance) (mysql_global_status_threads_connected{mysql_address=~\"$mysql\"}))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}|CONN",
+          "refId": "A"
+        },
+        {
+          "expr": "max by (instance,mysql_address) (rate(mysql_global_status_commands_total{mysql_address=~\"$mysql\",command=~\"select\"}[2m]))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}|QPS",
+          "refId": "B"
+        },
+        {
+          "expr": "sum by(mysql_address,instance)(irate(mysql_global_status_commands_total{mysql_address=~\"$mysql\",command=~\"update|create|insert\"}[2m]))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}|TPS",
+          "refId": "C"
+        },
+        {
+          "expr": "max by(mysql_address,instance) (irate(mysql_global_status_slow_queries{mysql_address=~\"$mysql\"}[2m]))",
+          "interval": "",
+          "legendFormat": "{{instance}}|slowQuery",
+          "refId": "D"
+        },
+        {
+          "expr": "mysql_slave_status_seconds_behind_master{mysql_address=~\"$mysql\"}",
+          "interval": "",
+          "legendFormat": "{{instance}}|SecBe",
+          "refId": "E"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Mysql Overview",
+      "type": "yesoreyeram-boomtable-panel"
+    },
+    {
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 33,
+      "links": [],
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.3.5",
+      "targets": [
+        {
+          "expr": "sum by(proxy)(irate(haproxy_backend_http_responses_total{namespace=\"kube-haproxy\",  proxy=~\"sls-api.*\", proxy!~\".*-in|.*-xx\"}[1h]))",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "expr": "label_replace(max (label_join(avg by (application, cid,env)(avg_over_time(app:app_pod_cpu_usage_seconds_total:sum_irate{application=~\"sls-api.*\", env=\"live\",env!~\"in|xx\", cid!~\"xx|in\"}[1h])), \"container\", \"-\", \"application\", \"env\", \"cid\")) by (container)/ max(kube_pod_container_resource_limits_cpu_cores{namespace=~\"sls.*\", container=~\"sls-api.*\"}) by (container), \"proxy\", \"$1\", \"container\",\".*\")",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ container }}",
+          "refId": "B"
+        },
+        {
+          "expr": "max (label_join(avg by (application, cid,env)(avg_over_time(app:app_pod_memory_usage_bytes:sum{application=~\"sls-api.*\", env=\"live\",env!~\"in|xx\", cid!~\"xx|in\"}[1h])), \"container\", \"-\", \"application\", \"env\", \"cid\")) by (container)/ max(kube_pod_container_resource_limits_memory_bytes{namespace=~\"sls.*\", container=~\"sls-api.*\"}) by (container)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "C"
+        },
+        {
+          "expr": "avg by (proxy)(haproxy_backend_response_time_average_seconds{proxy=~\"sls-api.*\",namespace=\"kube-haproxy\",proxy!~\".*-in|.*-xx\"})*1000   and  sum by (proxy)(rate(haproxy_backend_http_requests_total{proxy=~\"sls-api.*\",namespace=\"kube-haproxy\"}[120s])) >0 ",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "D"
+        },
+        {
+          "expr": "sum by (proxy)(haproxy:qps_k8s_err_proxy_code_240{proxy=~\"sls-api.*\",proxy!~\".*-in|.*-xx\",code=\"4xx\"})",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "E"
+        },
+        {
+          "expr": "sum by (proxy)(haproxy:qps_k8s_err_proxy_code_240{proxy=~\"sls-api.*\",proxy!~\".*-in|.*-xx\",code=\"5xx\"})",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "F"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "sls overview",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Value #A": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #B": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #C": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #D": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #E": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #F": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "container": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "proxy": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "proxy"
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "activePatternIndex": 1,
+      "datasource": "$datasource",
+      "defaultPattern": {
+        "bgColors": "green|orange|red",
+        "col_name": "_1_",
+        "decimals": 2,
+        "delimiter": ".",
+        "enable_bgColor": false,
+        "enable_time_based_thresholds": false,
+        "enable_transform": false,
+        "filter": {
+          "value_above": "",
+          "value_below": ""
+        },
+        "format": "none",
+        "null_color": "darkred",
+        "null_value": "No data",
+        "row_name": "_series_",
+        "thresholds": "70,90",
+        "time_based_thresholds": [],
+        "transform_values": "_value_|_value_|_value_",
+        "valueName": "avg"
+      },
+      "default_title_for_rows": "SERVICE",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 17,
+        "y": 16
+      },
+      "id": 29,
+      "links": [],
+      "non_matching_cells_color_bg": "green",
+      "non_matching_cells_text": "0",
+      "nullPointMode": "connected",
+      "patterns": [
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": "1",
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "percentunit",
+          "name": "CPU",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "CPU_MAX|CPU_AVG",
+          "row_name": "_0_",
+          "thresholds": "0.5,0.7",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": "1",
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "QPS",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "QPS",
+          "row_name": "_0_",
+          "thresholds": "16800",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": "1",
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "percentunit",
+          "name": "MEM",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "MEM_MAX|MEM_AVG",
+          "row_name": "_0_",
+          "thresholds": "50,70",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "LIMIT",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "CPU_LIMIT|MEM_LIMIT",
+          "row_name": "_0_",
+          "thresholds": "900",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "Error",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "4xx|5xx",
+          "row_col_wrapper": "_",
+          "row_name": "_0_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "5",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_value_|_value_|_value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "ms",
+          "name": "latency",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "latency",
+          "row_col_wrapper": "_",
+          "row_name": "_0_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "40,60",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_value_|_value_|_value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "max"
+        }
+      ],
+      "plugin_title": "Boom Table",
+      "row_col_wrapper": "_",
+      "targets": [
+        {
+          "expr": "sum by(proxy)(irate(haproxy_backend_http_responses_total{namespace=\"kube-haproxy\",  proxy=~\"lls.*livetest.*\", proxy!~\".*xx.*|.*in.*|.*appdownloads.*|.*static.*|.*nginx.*|-.*liveish.*\"}[1h]))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{proxy}}|QPS",
+          "refId": "A"
+        },
+        {
+          "expr": "max (label_join(avg by (application, cid,env)(avg_over_time(app:app_pod_cpu_usage_seconds_total:sum_irate{application=~\"lls.*livetest.*\", env=\"live\",env!~\"in|xx\", cid!~\"xx|in\"}[1h])), \"container\", \"-\", \"application\", \"env\", \"cid\")) by (container)/ max(kube_pod_container_resource_limits_cpu_cores{namespace=~\"lls.*\", container=~\"lls.*livetest-live.*\"}) by (container)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{container}}|CPU_MAX",
+          "refId": "B"
+        },
+        {
+          "expr": "max (label_join(avg by (application, cid,env)(avg_over_time(app:app_pod_memory_usage_bytes:sum{application=~\"lls.*\", env=\"live\",env!~\"in|xx\", cid!~\"xx|in\"}[1h])), \"container\", \"-\", \"application\", \"env\", \"cid\")) by (container)/ max(kube_pod_container_resource_limits_memory_bytes{namespace=~\"lls.*\", container=~\".*livetest.*\"}) by (container)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{container}}|MEM_MAX",
+          "refId": "D"
+        },
+        {
+          "expr": "sum by (proxy)(haproxy:qps_k8s_err_proxy_code_240{proxy=~\"lls.*livetest-live.*\",proxy!~\".*-in|.*-xx\",code=\"4xx\"})",
+          "interval": "",
+          "legendFormat": "{{proxy}}|4xx",
+          "refId": "H"
+        },
+        {
+          "expr": "sum by (proxy)(haproxy:qps_k8s_err_proxy_code_240{proxy=~\"lls.*livetest-live.*\",proxy!~\".*-in|.*-xx\",code=\"5xx\"})",
+          "interval": "",
+          "legendFormat": "{{proxy}}|5xx",
+          "refId": "I"
+        },
+        {
+          "expr": "avg by (proxy)(haproxy_backend_response_time_average_seconds{proxy=~\"lls.*livetest.*\",namespace=\"kube-haproxy\",proxy!~\".*-in|.*-xx*\"})*1000   and  sum by (proxy)(rate(haproxy_backend_http_requests_total{proxy=~\"lls.*livetest-live.*\",namespace=\"kube-haproxy\"}[120s])) >0 ",
+          "interval": "",
+          "legendFormat": "{{proxy}}|latency",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "lls livetest overview",
+      "type": "yesoreyeram-boomtable-panel"
+    },
+    {
+      "activePatternIndex": 0,
+      "datasource": "Prometheus-mq",
+      "defaultPattern": {
+        "bgColors": "green|orange|red",
+        "bgColors_overrides": "0->green|2->red|1->yellow",
+        "clickable_cells_link": "",
+        "col_name": "_1_",
+        "decimals": "0",
+        "delimiter": "|",
+        "enable_bgColor": true,
+        "enable_bgColor_overrides": false,
+        "enable_clickable_cells": false,
+        "enable_textColor": false,
+        "enable_textColor_overrides": false,
+        "enable_time_based_thresholds": false,
+        "enable_transform": false,
+        "enable_transform_overrides": false,
+        "filter": {
+          "value_above": "",
+          "value_below": ""
+        },
+        "format": "none",
+        "name": "Default Pattern",
+        "null_color": "",
+        "null_textcolor": "",
+        "null_value": "0",
+        "pattern": "*",
+        "row_col_wrapper": "_",
+        "row_name": "_0_",
+        "textColors": "red|orange|green",
+        "textColors_overrides": "0->red|2->green|1->yellow",
+        "thresholds": "10000",
+        "time_based_thresholds": [],
+        "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+        "transform_values": "_value_|_value_|_value_",
+        "transform_values_overrides": "0->down|1->up",
+        "valueName": "current"
+      },
+      "default_title_for_rows": "Metric",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 0,
+        "y": 25
+      },
+      "id": 21,
+      "patterns": [],
+      "pluginVersion": "7.1.1",
+      "row_col_wrapper": "_",
+      "targets": [
+        {
+          "expr": "topk(15,sum by (vhost,queue) (rabbitmq_queue_messages{cluster=~\"rabbitmq_ssc_ctl_live\", vhost=~\"sls|ssc-sls|ssc-sls-smartrouting|sls-ssc-slsops\",queue!~\"celery@.*\"}))",
+          "interval": "",
+          "legendFormat": "{{vhost}}@{{queue}}|Queue",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "RabbitMQ queue",
+      "type": "yesoreyeram-boomtable-panel"
+    },
+    {
+      "activePatternIndex": 0,
+      "datasource": "$middleware_datasource",
+      "defaultPattern": {
+        "bgColors": "green|orange|red",
+        "col_name": "_1_",
+        "decimals": 2,
+        "delimiter": "|",
+        "enable_bgColor": true,
+        "enable_time_based_thresholds": false,
+        "enable_transform": false,
+        "filter": {
+          "value_above": "",
+          "value_below": ""
+        },
+        "format": "percentunit",
+        "null_color": "darkred",
+        "null_value": "No data",
+        "row_name": "_0_",
+        "thresholds": "0.5,0.7",
+        "time_based_thresholds": [],
+        "transform_values": "_value_|_value_|_value_",
+        "valueName": "current"
+      },
+      "default_title_for_rows": "Cluster",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 9,
+        "x": 8,
+        "y": 25
+      },
+      "hide_first_column": false,
+      "hide_headers": false,
+      "id": 27,
+      "links": [],
+      "nullPointMode": "connected",
+      "patterns": [
+        {
+          "bgColors": "green|orange|red",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "short",
+          "name": "QPS",
+          "null_color": "darkred",
+          "null_value": "No data",
+          "pattern": "QPS",
+          "row_name": "_0_",
+          "thresholds": "3000000",
+          "time_based_thresholds": [],
+          "transform_values": "_value_|_value_|_value_",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "Conn",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "Conn",
+          "row_col_wrapper": "_",
+          "row_name": "_0_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "50000",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_value_|_value_|_value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "avg"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "_1_",
+          "decimals": 2,
+          "delimiter": "|",
+          "enable_bgColor": true,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "percentunit",
+          "name": "CPU",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "CPU",
+          "row_col_wrapper": "_",
+          "row_name": "_0_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "0.6,0.8",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_value_|_value_|_value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "avg"
+        }
+      ],
+      "pluginVersion": "7.1.1",
+      "plugin_title": "Boom Table",
+      "row_col_wrapper": "_",
+      "sorting_props": {
+        "col_index": -1,
+        "direction": "desc"
+      },
+      "targets": [
+        {
+          "expr": "sum by( alias)(irate(redis_command_call_duration_seconds_count{alias=~\".*sls.*\", cmd!~\"ping|info|config\",addr=~\"$master\"}[30s]))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{alias}}|QPS",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (proxy)(haproxy_backend_current_sessions{proxy=~\".*sls.*\",proxy!~\".*_bak$\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{proxy}}|Conn",
+          "refId": "D"
+        },
+        {
+          "expr": "max(sum(rate(redis_used_cpu_sys{alias=~\".*sls.*\",alias!~\".*_bak$\"}[1m])) by (addr,alias)+ sum(rate(redis_used_cpu_user{alias=~\".*sls.*\",alias!~\".*_bak$\"}[1m])) by (addr,alias)) by(alias)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{alias}}|CPU",
+          "refId": "B"
+        },
+        {
+          "expr": "max(redis_memory_used_bytes{alias=~\".*sls.*\",alias!~\".*_bak$\"}/redis_memory_max_bytes{alias=~\".*sls.*\",alias!~\".*_bak$\"})by (alias)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{alias}}|MEM",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Codis Overview",
+      "type": "yesoreyeram-boomtable-panel"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "Supply Chain Group",
+          "value": "Supply Chain Group"
+        },
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "Group",
+        "options": [
+          {
+            "selected": true,
+            "text": "Supply Chain Group",
+            "value": "Supply Chain Group"
+          }
+        ],
+        "query": "Supply Chain Group",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "groups/10",
+          "value": "groups/10"
+        },
+        "datasource": "MySQL",
+        "definition": "SELECT `biz_group` FROM `topology_tab` WHERE `group_name` = \"$Group\"",
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "group_id",
+        "options": [],
+        "query": "SELECT `biz_group` FROM `topology_tab` WHERE `group_name` = \"$Group\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "sls",
+          "value": "sls"
+        },
+        "datasource": "MySQL",
+        "definition": "SELECT `project_name` FROM `topology_tab` WHERE `delete_status`=0 AND `biz_project` IN (SELECT `biz_project` FROM `mysql_service_tab` WHERE `delete_status` = 0 and `biz_group` = \"$group_id\")",
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "Project",
+        "options": [],
+        "query": "SELECT `project_name` FROM `topology_tab` WHERE `delete_status`=0 AND `biz_project` IN (SELECT `biz_project` FROM `mysql_service_tab` WHERE `delete_status` = 0 and `biz_group` = \"$group_id\")",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "projects/135",
+          "value": "projects/135"
+        },
+        "datasource": "MySQL",
+        "definition": "SELECT biz_project FROM `topology_tab` WHERE `biz_group`=\"$group_id\"  AND `project_name` = \"$Project\"",
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "project_id",
+        "options": [],
+        "query": "SELECT biz_project FROM `topology_tab` WHERE `biz_group`=\"$group_id\"  AND `project_name` = \"$Project\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "LIVE",
+          "value": "LIVE"
+        },
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "Env",
+        "options": [
+          {
+            "selected": true,
+            "text": "LIVE",
+            "value": "LIVE"
+          }
+        ],
+        "query": "LIVE",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "error": null,
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": false,
+        "name": "CID",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "SG",
+            "value": "SG"
+          },
+          {
+            "selected": false,
+            "text": "VN",
+            "value": "VN"
+          },
+          {
+            "selected": false,
+            "text": "ID",
+            "value": "ID"
+          },
+          {
+            "selected": false,
+            "text": "PH",
+            "value": "PH"
+          },
+          {
+            "selected": false,
+            "text": "TH",
+            "value": "TH"
+          },
+          {
+            "selected": false,
+            "text": "MY",
+            "value": "MY"
+          },
+          {
+            "selected": false,
+            "text": "TW",
+            "value": "TW"
+          },
+          {
+            "selected": false,
+            "text": "BR",
+            "value": "BR"
+          }
+        ],
+        "query": "SG,VN,ID,PH,TH,MY,TW,BR",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "MySQL",
+        "definition": "SELECT `mysql` FROM `mysql_service_tab` WHERE `delete_status`=0 AND `biz_project` = \"$project_id\" AND `cid` in ($CID,\"Global\")",
+        "error": null,
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "mysql",
+        "options": [],
+        "query": "SELECT `mysql` FROM `mysql_service_tab` WHERE `delete_status`=0 AND `biz_project` = \"$project_id\" AND `cid` in ($CID,\"Global\")",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "vm-live-middleware",
+          "value": "vm-live-middleware"
+        },
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "middleware_datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "vm-live-middleware",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "$middleware_datasource",
+        "definition": "label_values(redis_instance_info{role=\"master\", alias=~\".*sls.*\"}, addr)",
+        "error": null,
+        "hide": 2,
+        "includeAll": true,
+        "label": "Master",
+        "multi": false,
+        "name": "master",
+        "options": [],
+        "query": "label_values(redis_instance_info{role=\"master\", alias=~\".*sls.*\"}, addr)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "k8s-general-ctl-live",
+          "value": "k8s-general-ctl-live"
+        },
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "k8s-general-ctl-live",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Overview Demo",
+  "uid": "MeG7PqrGz",
+  "version": 11
+}
